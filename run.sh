@@ -28,3 +28,5 @@ rm url_list.txt
 # Run the scraping program to gather all of the links
 echo "Scraping 'sci.fi.ncsu.edu/cybersecurity'"
 python url_gather.py > url_list.txt
+
+echo "Done."

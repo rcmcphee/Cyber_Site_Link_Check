@@ -1,0 +1,82 @@
+
+Visiting: https://sci.fi.ncsu.edu/cybersecurity/
+Error checking https://asadrtlafvov.com/: HTTPSConnectionPool(host='asadrtlafvov.com', port=443): Max retries exceeded with url: / (Caused by NameResolutionError("<urllib3.connection.HTTPSConnection object at 0x0000021489DF2AD0>: Failed to resolve 'asadrtlafvov.com' ([Errno 11001] getaddrinfo failed)"))
+
+Visiting: https://sci.fi.ncsu.edu/cybersecurity/north-carolina-digital-learning-plan/
+
+Visiting: https://sci.fi.ncsu.edu/cybersecurity/ncdpi-k-12-webinar-series/
+
+Visiting: https://sci.fi.ncsu.edu/cybersecurity/ncdpi-k-12-webinar-series/#ncst-accordion-item-1-6
+
+Visiting: https://sci.fi.ncsu.edu/cybersecurity/ncdpi-k-12-webinar-series/#ncst-accordion-item-0-4
+
+Visiting: https://sci.fi.ncsu.edu/cybersecurity/tools/
+
+Visiting: https://sci.fi.ncsu.edu/cybersecurity/cybersecurity-awareness-month-2024/
+
+Visiting: https://sci.fi.ncsu.edu/cybersecurity/cybersecurity-awareness-month-2024/#ncst-accordion-item-1-3
+
+Visiting: https://sci.fi.ncsu.edu/cybersecurity/cybersecurity-awareness-month-2024/#ncst-accordion-item-1-2
+
+Visiting: https://sci.fi.ncsu.edu/cybersecurity/cybersecurity-awareness-month-2024/#ncst-accordion-item-1-1
+
+Visiting: https://sci.fi.ncsu.edu/cybersecurity/cybersecurity-awareness-month-2024/#ncst-accordion-item-1-0
+
+Visiting: https://sci.fi.ncsu.edu/cybersecurity/cybersecurity-awareness-month-2024/#ncst-accordion-item-undefined-8
+
+Visiting: https://sci.fi.ncsu.edu/cybersecurity/cybersecurity-awareness-month-2024/#ncst-accordion-item-undefined-7
+
+Visiting: https://sci.fi.ncsu.edu/cybersecurity/cybersecurity-awareness-month-2024/#ncst-accordion-item-undefined-6
+
+Visiting: https://sci.fi.ncsu.edu/cybersecurity/cybersecurity-awareness-month-2024/#ncst-accordion-item-undefined-5
+
+Visiting: https://sci.fi.ncsu.edu/cybersecurity/cybersecurity-awareness-month-2024/#ncst-accordion-item-undefined-4
+
+Visiting: https://sci.fi.ncsu.edu/cybersecurity/fcc-schools-and-libraries-cybersecurity-pilot-program/
+
+Visiting: https://sci.fi.ncsu.edu/cybersecurity/fcc-schools-and-libraries-cybersecurity-pilot-program/#ncst-accordion-item-0-0
+
+Visiting: https://sci.fi.ncsu.edu/cybersecurity/north-carolina-national-guard/
+
+Visiting: https://sci.fi.ncsu.edu/cybersecurity/nclgisa-it-strike-team/
+
+Visiting: https://sci.fi.ncsu.edu/cybersecurity/network-and-cybersecurity-consulting/
+
+Visiting: https://sci.fi.ncsu.edu/cybersecurity/service-provider-management/
+
+Visiting: https://sci.fi.ncsu.edu/cybersecurity/incident-response-handling/
+
+Visiting: https://sci.fi.ncsu.edu/cybersecurity/incident-response-capability-planning/
+Error checking https://www.incidentresponse.org/playbooks/: HTTPSConnectionPool(host='www.incidentresponse.org', port=443): Max retries exceeded with url: /playbooks/ (Caused by NameResolutionError("<urllib3.connection.HTTPSConnection object at 0x000002148B43D590>: Failed to resolve 'www.incidentresponse.org' ([Errno 11002] getaddrinfo failed)"))
+
+Visiting: https://sci.fi.ncsu.edu/cybersecurity/network-monitoring-and-defense/
+
+Visiting: https://sci.fi.ncsu.edu/cybersecurity/account-and-access-control-management/
+
+Visiting: https://sci.fi.ncsu.edu/cybersecurity/inventory-and-control-of-enterprise-assets/
+
+Visiting: https://sci.fi.ncsu.edu/cybersecurity/inventory-and-control-of-enterprise-assets/#ncst-accordion-item-0-8
+
+Visiting: https://sci.fi.ncsu.edu/cybersecurity/continuous-vulnerability-management-iii/
+
+Visiting: https://sci.fi.ncsu.edu/cybersecurity/malware-defenses/
+
+Visiting: https://sci.fi.ncsu.edu/cybersecurity/network-infrastructure-management/
+
+Visiting: https://sci.fi.ncsu.edu/cybersecurity/email-and-web-browser-protection/
+
+Visiting: https://sci.fi.ncsu.edu/cybersecurity/security-awareness-and-training/
+
+Visiting: https://sci.fi.ncsu.edu/cybersecurity/security-awareness-and-training/#ncst-accordion-item-0-10
+
+Visiting: https://sci.fi.ncsu.edu/cybersecurity/cybersecurity-knowledge-skills-training-resources/
+
+Visiting: https://sci.fi.ncsu.edu/cybersecurity/cybersecurity-it-certifications/
+Error checking https://asadrtlafvov.com/: HTTPSConnectionPool(host='asadrtlafvov.com', port=443): Max retries exceeded with url: / (Caused by NameResolutionError("<urllib3.connection.HTTPSConnection object at 0x0000021489DF2990>: Failed to resolve 'asadrtlafvov.com' ([Errno 11001] getaddrinfo failed)"))
+
+Visiting: https://sci.fi.ncsu.edu/cybersecurity/general-announcements/
+
+Visiting: https://sci.fi.ncsu.edu/cybersecurity/general-announcements/#ncst-accordion-item-1-10
+
+Visiting: https://sci.fi.ncsu.edu/cybersecurity/general-announcements/#ncst-accordion-item-1-2
+Scraping finished. Found 39 links.

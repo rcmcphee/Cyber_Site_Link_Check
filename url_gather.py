@@ -1,7 +1,5 @@
 import requests
 from bs4 import BeautifulSoup
-from bs4 import XMLParsedAsHTMLWarning
-import warnings
 from urllib.parse import urlparse, urljoin
 import time
 
@@ -34,13 +32,16 @@ def is_url_alive(url):
         }
         
         # Use GET request with headers and a timeout to handle potential slow responses
-        response = requests.get(url, headers=headers, allow_redirects=True)
+        response = requests.get(url, headers=headers, allow_redirects=True, timeout=2)  # Increased timeout
         
         # If status code starts with 2xx, consider it alive
         if response.status_code >= 200 and response.status_code < 300:
             return True
         else:
             return False
+    except requests.exceptions.Timeout:
+        # print(f"Timeout occurred when checking {url}. Skipping this URL.")
+        return False
     except requests.exceptions.RequestException as e:
         print(f"Error checking {url}: {e}")
         return False
@@ -49,7 +50,7 @@ def is_url_alive(url):
 def extract_links(url):
     try:
         # Send a request to get the page content
-        response = requests.get(url)
+        response = requests.get(url, timeout=15)  # Increased timeout
         response.raise_for_status()  # Check if request was successful
         
         # Parse the HTML content using BeautifulSoup
@@ -72,7 +73,7 @@ def extract_links(url):
                     "status": "Alive"
                 })
             # If it's an external URL, add it to the external URLs list
-            elif is_external_url(link_url) and link_url not in external_urls:
+            elif is_external_url(link_url) and link_url not in external_urls and not link_url.startswith("mailto"):
                 link_info.append({
                     "external": True,
                     "link_url": link_url,
@@ -92,9 +93,9 @@ def scrape_website(start_url):
     # Start with the given URL
     to_visit = [start_url]
     all_links = []
-    
+        
+    # Iterate through URLs to check them concurrently
     while to_visit:
-        # Get the next URL from the list
         current_url = to_visit.pop()
         
         # If we have already visited this URL, skip it
@@ -108,15 +109,11 @@ def scrape_website(start_url):
         # Extract links from the current page
         links = extract_links(current_url)
         
-        # Add the new internal links to the to_visit list and print links that are external
+        # Add the new internal links to the to_visit list and prepare external links for concurrent checking
         for link in links:
             all_links.append(link)
-            if link['external'] == False and link['link_url'] not in visited_urls:
-                to_visit.append(link["link_url"])
-            elif link['external'] == True:
-                # Print to output file
-                if link['status'] == "Broken":
-                    print(f"BROKEN: Link: {link['link_url']} (Line: {link['line_number']})")                 
+            if link['external'] == False and link['link_url'] not in visited_urls and not link['link_url'].endswith("#main-content"):
+                to_visit.append(link["link_url"])                     
                      
         # Sleep to avoid overwhelming the server (optional but respectful)
         time.sleep(1)
