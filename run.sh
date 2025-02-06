@@ -29,4 +29,5 @@ rm url_list.txt
 echo "Scraping 'sci.fi.ncsu.edu/cybersecurity'"
 python url_gather.py > url_list.txt
 
+echo ""
 echo "Done."

@@ -1,7 +1,27 @@
 import requests
 from bs4 import BeautifulSoup
 from urllib.parse import urlparse, urljoin
+
 import time
+import sys
+import threading
+
+# Timer function that updates the terminal
+def timer():
+    start_time = time.time()
+    while True:
+        elapsed_time = time.time() - start_time
+        minutes, seconds = divmod(int(elapsed_time), 60)
+        timer_display = f"\rElapsed Time: {minutes:02}:{seconds:02}   |   Expected Time: ~ 9:00"  # Format time as MM:SS
+        sys.stderr.write(timer_display)
+        sys.stderr.flush()
+        time.sleep(1)
+
+# Function to start the timer in a separate thread
+def start_timer():
+    timer_thread = threading.Thread(target=timer)
+    timer_thread.daemon = True  # This ensures the timer thread stops when the main program exits
+    timer_thread.start()
 
 # Set to store visited URLs
 visited_urls = set()
@@ -33,15 +53,9 @@ def is_url_alive(url):
         
         # Use GET request with headers and a timeout to handle potential slow responses
         response = requests.get(url, headers=headers, allow_redirects=True, timeout=2)  # Increased timeout
-        
+
         # If status code starts with 2xx, consider it alive
-        if response.status_code >= 200 and response.status_code < 300:
-            return True
-        else:
-            return False
-    except requests.exceptions.Timeout:
-        # print(f"Timeout occurred when checking {url}. Skipping this URL.")
-        return False
+        return response.status_code >= 200 and response.status_code < 300
     except requests.exceptions.RequestException as e:
         print(f"Error checking {url}: {e}")
         return False
@@ -64,23 +78,23 @@ def extract_links(url):
         for idx, link in enumerate(links):
             link_url = urljoin(url, link['href'])  # Absolute URL of the link
             # If it's an internal URL, add it for recursive crawling
-            if is_internal_url(link_url) and link_url not in visited_urls:
-                link_info.append({
-                    "external": False,
-                    "link_url": link_url,
-                    "line_number": idx + 1,  # Line numbers start from 1, not 0
-                    "page_url": url,
-                    "status": "Alive"
-                })
-            # If it's an external URL, add it to the external URLs list
-            elif is_external_url(link_url) and link_url not in external_urls and not link_url.startswith("mailto"):
-                link_info.append({
-                    "external": True,
-                    "link_url": link_url,
-                    "line_number": idx + 1,  # Line numbers start from 1, not 0
-                    "page_url": url,
-                    "status": "Alive" if is_url_alive(link_url) else "Broken"
-                })
+            if link_url not in visited_urls and not link_url.startswith("mailto") and not link_url.endswith("#main-content"):
+                if is_internal_url(link_url):
+                    link_info.append({
+                        "external": False,
+                        "link_url": link_url,
+                        "line_number": idx + 1,
+                        "page_url": url,
+                        "status": "Alive"
+                    })
+                elif is_external_url(link_url):
+                    link_info.append({
+                        "external": True,
+                        "link_url": link_url,
+                        "line_number": idx + 1,
+                        "page_url": url,
+                        "status": "Alive" if is_url_alive(link_url) else "Broken"
+                    })
         
         return link_info
 
@@ -90,6 +104,9 @@ def extract_links(url):
 
 # Function to recursively crawl internal URLs and collect external URLs
 def scrape_website(start_url):
+    # Start timer
+    start_timer()
+
     # Start with the given URL
     to_visit = [start_url]
     all_links = []
@@ -114,9 +131,6 @@ def scrape_website(start_url):
             all_links.append(link)
             if link['external'] == False and link['link_url'] not in visited_urls and not link['link_url'].endswith("#main-content"):
                 to_visit.append(link["link_url"])                     
-                     
-        # Sleep to avoid overwhelming the server (optional but respectful)
-        time.sleep(1)
 
     return all_links
 
